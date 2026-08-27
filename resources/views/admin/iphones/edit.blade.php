@@ -1,7 +1,7 @@
-<x-app-layout>
+<x-admin-layout>
     <x-slot name="header"><h2 class="font-semibold text-xl text-gray-800 leading-tight">Edit iPhone</h2></x-slot>
     <div class="py-12 max-w-3xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white p-6 rounded shadow">
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm animate-fade-in-up">
             <form action="{{ route('admin.iphones.update', $iphone->id) }}" method="POST">
                 @csrf @method('PUT')
                 <div class="mb-4"><label class="block">Nama iPhone</label><input type="text" name="name" value="{{ $iphone->name }}" class="w-full border-gray-300 rounded" required></div>
@@ -14,4 +14,4 @@
             </form>
         </div>
     </div>
-</x-app-layout>
+</x-admin-layout>

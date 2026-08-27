@@ -10,11 +10,11 @@ class HomeController extends Controller
     {
         $iphones = Iphone::where('status', 'available')->get();
         return view('welcome', compact('iphones'));
+    }
     
     public function show($id)
     {
         $iphone = Iphone::findOrFail($id);
         return view('customer.iphone_detail', compact('iphone'));
     }
-}
 }

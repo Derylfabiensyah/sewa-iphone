@@ -1,10 +1,10 @@
-<x-app-layout>
+<x-admin-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">Detail Pesanan #{{ $booking->id }}</h2>
     </x-slot>
 
     <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-white p-6 rounded shadow">
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm animate-fade-in-up">
             <h3 class="font-bold text-lg mb-4">Informasi Penyewa</h3>
             <p><strong>Nama:</strong> {{ $booking->user->name }}</p>
             <p><strong>Tanggal Sewa:</strong> {{ $booking->start_date }} s/d {{ $booking->end_date }}</p>
@@ -18,7 +18,7 @@
             </ul>
         </div>
 
-        <div class="bg-white p-6 rounded shadow">
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm animate-fade-in-up">
             <h3 class="font-bold text-lg mb-4">Pembayaran & Aksi</h3>
             <p><strong>Status Pembayaran:</strong> {{ $booking->payment->status ?? 'Belum ada' }}</p>
             @if($booking->payment && $booking->payment->proof_of_payment)
@@ -65,4 +65,4 @@
             @endif
         </div>
     </div>
-</x-app-layout>
+</x-admin-layout>

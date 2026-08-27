@@ -1,37 +1,57 @@
-<x-app-layout>
+<x-customer-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Detail iPhone: {{ $iphone->name }}</h2>
+        <h2 class="font-semibold text-2xl tracking-tight text-foreground">Detail iPhone</h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white rounded shadow p-8">
-                <h3 class="text-3xl font-bold mb-4">{{ $iphone->name }}</h3>
-                <p><strong>Storage:</strong> {{ $iphone->storage }}</p>
-                <p><strong>Warna:</strong> {{ $iphone->color }}</p>
-                <p><strong>Status:</strong> {{ $iphone->status }}</p>
-                <p class="mt-4 text-gray-700">{{ $iphone->description }}</p>
-                
-                <h4 class="text-2xl font-bold text-blue-600 mt-6 mb-4">Rp {{ number_format($iphone->price_per_day, 0, ',', '.') }} / hari</h4>
-                
-                <form action="{{ route('cart.add', $iphone->id) }}" method="POST">
-                    @csrf
-                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-bold rounded">Tambah ke Keranjang</button>
-                </form>
+    <div class="py-12 bg-[#f5f5f7] min-h-screen animate-fade-in-up">
+        <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
+            <div class="rounded-[2rem] border border-gray-100 bg-white shadow-sm overflow-hidden flex flex-col md:flex-row">
+                <div class="md:w-1/2 bg-muted relative">
+                    <img src="{{ $iphone->image ?? 'https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?q=80&w=800' }}" alt="{{ $iphone->name }}" class="object-cover w-full h-full min-h-[400px]">
+                </div>
+                <div class="p-8 md:w-1/2 flex flex-col">
+                    <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold w-fit mb-4 {{ $iphone->status == 'available' ? 'bg-primary/10 text-primary border-primary/20' : 'bg-destructive/10 text-destructive border-destructive/20' }}">{{ strtoupper($iphone->status) }}</div>
+                    
+                    <h3 class="text-3xl font-bold tracking-tight">{{ $iphone->name }}</h3>
+                    <div class="flex gap-2 mt-3 mb-6">
+                        <span class="inline-flex items-center rounded-md border bg-secondary px-2.5 py-0.5 text-xs font-semibold text-secondary-foreground">{{ $iphone->storage }}</span>
+                        <span class="inline-flex items-center rounded-md border bg-secondary px-2.5 py-0.5 text-xs font-semibold text-secondary-foreground">{{ $iphone->color }}</span>
+                    </div>
+                    
+                    <p class="text-muted-foreground mb-8 leading-relaxed">{{ $iphone->description }}</p>
+                    
+                    <h4 class="text-3xl font-bold tracking-tight text-primary mb-6">Rp {{ number_format($iphone->price_per_day, 0, ',', '.') }}<span class="text-sm font-normal text-muted-foreground">/hari</span></h4>
+                    
+                    <form action="{{ route('cart.add', $iphone->id) }}" method="POST" class="mt-auto">
+                        @csrf
+                        <button type="submit" class="w-full inline-flex items-center justify-center rounded-md text-sm font-medium bg-primary text-primary-foreground shadow hover:bg-primary/90 h-12 px-8 text-base">
+                            Tambah ke Keranjang
+                        </button>
+                    </form>
+                </div>
+            </div>
 
-                <h4 class="text-xl font-bold mt-12 border-b pb-2">Ulasan (Reviews)</h4>
+            <div class="mt-8 rounded-[2rem] border border-gray-100 bg-white shadow-sm p-8">
+                <h4 class="text-2xl font-bold tracking-tight mb-6">Ulasan (Reviews)</h4>
                 @if($iphone->reviews()->count() > 0)
+                    <div class="space-y-6">
                     @foreach($iphone->reviews as $review)
-                        <div class="mt-4 border p-4 rounded bg-gray-50">
-                            <p class="font-bold">{{ $review->user->name }} - {{ $review->rating }}/5</p>
-                            <p class="mt-2 text-gray-600">{{ $review->comment }}</p>
-                            <p class="text-xs text-gray-400 mt-2">{{ $review->created_at->diffForHumans() }}</p>
+                        <div class="border-b pb-6 last:border-0 last:pb-0">
+                            <div class="flex items-center justify-between mb-2">
+                                <p class="font-semibold">{{ $review->user->name }}</p>
+                                <div class="flex items-center">
+                                    <span class="text-primary font-bold mr-1">{{ $review->rating }}</span><span class="text-muted-foreground text-sm">/ 5</span>
+                                </div>
+                            </div>
+                            <p class="text-muted-foreground">{{ $review->comment }}</p>
+                            <p class="text-xs text-muted-foreground mt-2">{{ $review->created_at->diffForHumans() }}</p>
                         </div>
                     @endforeach
+                    </div>
                 @else
-                    <p class="mt-4 text-gray-500">Belum ada ulasan untuk iPhone ini.</p>
+                    <p class="text-muted-foreground italic">Belum ada ulasan untuk iPhone ini.</p>
                 @endif
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-customer-layout>
