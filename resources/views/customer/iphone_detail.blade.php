@@ -6,8 +6,8 @@
     <div class="py-12 bg-[#f5f5f7] min-h-screen animate-fade-in-up">
         <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
             <div class="rounded-[2rem] border border-gray-100 bg-white shadow-sm overflow-hidden flex flex-col md:flex-row">
-                <div class="md:w-1/2 bg-muted relative">
-                    <img src="{{ $iphone->image ?? 'https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?q=80&w=800' }}" alt="{{ $iphone->name }}" class="object-cover w-full h-full min-h-[400px]">
+                <div class="md:w-1/2 bg-gradient-to-b from-[#f5f5f7] to-[#e5e5ea] relative flex items-center justify-center">
+                    <img src="{{ $iphone->image ?? 'https://m.media-amazon.com/images/I/81Os1SDWpcL._AC_SL1500_.jpg' }}" alt="{{ $iphone->name }}" class="object-contain w-4/5 h-4/5 mix-blend-multiply drop-shadow-2xl mx-auto my-auto p-8 hover:scale-105 transition-transform duration-700">
                 </div>
                 <div class="p-8 md:w-1/2 flex flex-col">
                     <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold w-fit mb-4 {{ $iphone->status == 'available' ? 'bg-primary/10 text-primary border-primary/20' : 'bg-destructive/10 text-destructive border-destructive/20' }}">{{ strtoupper($iphone->status) }}</div>

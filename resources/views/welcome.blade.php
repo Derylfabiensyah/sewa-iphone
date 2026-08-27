@@ -15,7 +15,7 @@
             
             <div class="mt-20 flex justify-center">
                 <!-- Using a high-res image representing the new phone -->
-                <img src="https://images.unsplash.com/photo-1696446701796-da61225697cc?q=80&w=1200" alt="iPhone Hero" class="w-full max-w-4xl rounded-[2.5rem] shadow-2xl border border-white/10 hover:scale-[1.02] transition-transform duration-700">
+                <img src="https://www.apple.com/v/iphone-15-pro/c/images/meta/iphone-15-pro_overview__f8jz7aagka2q_og.png" alt="iPhone Hero" class="w-full max-w-4xl rounded-[2.5rem] shadow-2xl border border-white/10 hover:scale-[1.02] transition-transform duration-700">
             </div>
         </div>
     </section>
@@ -51,8 +51,8 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in-up delay-300">
                 @foreach($iphones as $iphone)
                 <div class="bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden flex flex-col group hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-                    <div class="aspect-[4/5] bg-[#f5f5f7] p-8 relative overflow-hidden flex items-center justify-center">
-                        <img src="{{ $iphone->image ?? 'https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?q=80&w=800' }}" alt="{{ $iphone->name }}" class="object-cover w-full h-full rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-700">
+                    <div class="aspect-[4/5] bg-gradient-to-b from-[#f5f5f7] to-[#e5e5ea] p-8 relative overflow-hidden flex items-center justify-center">
+                        <img src="{{ $iphone->image ?? 'https://m.media-amazon.com/images/I/81Os1SDWpcL._AC_SL1500_.jpg' }}" alt="{{ $iphone->name }}" class="object-contain w-3/4 h-3/4 mix-blend-multiply drop-shadow-xl group-hover:scale-110 group-hover:-translate-y-4 transition-all duration-700">
                     </div>
                     <div class="p-8 flex flex-col flex-1 text-center">
                         <p class="text-primary text-sm font-semibold mb-2">{{ $iphone->color }}</p>

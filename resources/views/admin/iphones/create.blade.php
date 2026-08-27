@@ -5,7 +5,7 @@
             <form action="{{ route('admin.iphones.store') }}" method="POST">
                 @csrf
                 <div class="mb-4"><label class="block">Nama iPhone</label><input type="text" name="name" class="w-full border-gray-300 rounded" required></div>
-                <div class="mb-4"><label class="block">Storage (contob: 128GB)</label><input type="text" name="storage" class="w-full border-gray-300 rounded" required></div>
+                <div class="mb-4"><label class="block">Storage (contoh: 128GB)</label><input type="text" name="storage" class="w-full border-gray-300 rounded" required></div>
                 <div class="mb-4"><label class="block">Warna</label><input type="text" name="color" class="w-full border-gray-300 rounded" required></div>
                 <div class="mb-4"><label class="block">Harga per Hari (Rp)</label><input type="number" name="price_per_day" class="w-full border-gray-300 rounded" required></div>
                 <div class="mb-4"><label class="block">Deskripsi Singkat</label><textarea name="description" class="w-full border-gray-300 rounded"></textarea></div>
