@@ -13,7 +13,7 @@
         <!-- Email Address -->
         <div>
             <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-            <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-primary transition-shadow" placeholder="nama@email.com">
+            <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-shadow" placeholder="nama@email.com">
             <x-input-error :messages="$errors->get('email')" class="mt-2 text-red-500 text-xs" />
         </div>
 
@@ -27,7 +27,7 @@
                     </a>
                 @endif
             </div>
-            <input id="password" type="password" name="password" required autocomplete="current-password" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-primary transition-shadow" placeholder="••••••••">
+            <input id="password" type="password" name="password" required autocomplete="current-password" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-shadow" placeholder="••••••••">
             <x-input-error :messages="$errors->get('password')" class="mt-2 text-red-500 text-xs" />
         </div>
 

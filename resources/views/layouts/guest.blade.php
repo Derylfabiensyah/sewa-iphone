@@ -8,9 +8,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="font-sans text-gray-900 antialiased bg-[#f5f5f7] selection:bg-primary/30 selection:text-primary">
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 relative overflow-hidden">
+    <div class="min-h-screen flex flex-col sm:justify-center items-center py-12 relative">
         <!-- Abstract Background Decoration -->
-        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none opacity-40">
+        <div class="fixed top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none opacity-40">
             <div class="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-primary/20 blur-[120px]"></div>
             <div class="absolute top-[60%] -right-[10%] w-[50%] h-[50%] rounded-full bg-blue-400/10 blur-[120px]"></div>
         </div>
