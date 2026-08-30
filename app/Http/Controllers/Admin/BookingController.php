@@ -11,43 +11,38 @@ class BookingController extends Controller
     {
         $bookings = Booking::with('user', 'payment')->latest()->paginate(10);
         return view('admin.bookings.index', compact('bookings'));
-        public function rejectPayment(Request $request, Booking $booking)
-    {
-        $booking->payment()->update(['status' => 'rejected']);
-        return back()->with('error', 'Payment rejected.');
     }
-}
+
     public function show(Booking $booking)
     {
         $booking->load('user', 'details.iphone', 'payment');
         return view('admin.bookings.show', compact('booking'));
-        public function rejectPayment(Request $request, Booking $booking)
-    {
-        $booking->payment()->update(['status' => 'rejected']);
-        return back()->with('error', 'Payment rejected.');
     }
-}
+
     public function verifyPayment(Request $request, Booking $booking)
     {
-        $booking->payment()->update(['status' => 'verified']);
+        if ($booking->payment) {
+            $booking->payment()->update(['status' => 'verified']);
+        }
         $booking->update(['status' => 'confirmed']);
         return back()->with('success', 'Payment verified.');
-        public function rejectPayment(Request $request, Booking $booking)
+    }
+
+    public function rejectPayment(Request $request, Booking $booking)
     {
-        $booking->payment()->update(['status' => 'rejected']);
+        if ($booking->payment) {
+            $booking->payment()->update(['status' => 'rejected']);
+        }
+        $booking->update(['status' => 'waiting_payment']);
         return back()->with('error', 'Payment rejected.');
     }
-}
+
     public function markActive(Booking $booking)
     {
         $booking->update(['status' => 'active']);
         return back()->with('success', 'Booking marked as active.');
-        public function rejectPayment(Request $request, Booking $booking)
-    {
-        $booking->payment()->update(['status' => 'rejected']);
-        return back()->with('error', 'Payment rejected.');
     }
-}
+
     public function processReturn(Request $request, Booking $booking)
     {
         $request->validate([
@@ -65,16 +60,9 @@ class BookingController extends Controller
                 'penalty_fee' => $returnData['penalty_fee'],
                 'penalty_notes' => $returnData['penalty_notes'],
             ]);
-            public function rejectPayment(Request $request, Booking $booking)
-    {
-        $booking->payment()->update(['status' => 'rejected']);
-        return back()->with('error', 'Payment rejected.');
-    }
-}        $booking->update(['status' => 'completed']);
+        }
+        
+        $booking->update(['status' => 'completed']);
         return back()->with('success', 'Return processed and booking completed.');
-        public function rejectPayment(Request $request, Booking $booking)
-    {
-        $booking->payment()->update(['status' => 'rejected']);
-        return back()->with('error', 'Payment rejected.');
     }
-}}
+}
