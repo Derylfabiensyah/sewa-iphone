@@ -7,7 +7,10 @@ Route::get('/', [\App\Http\Controllers\Customer\HomeController::class, 'index'])
 Route::get('/iphone/{id}', [\App\Http\Controllers\Customer\HomeController::class, 'show'])->name('iphone.show');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    if (auth()->user()->role === 'admin') {
+        return redirect()->route('admin.dashboard');
+    }
+    return redirect()->route('home');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
