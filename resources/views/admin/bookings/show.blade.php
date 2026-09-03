@@ -36,7 +36,7 @@
                 @endif
             @endif
 
-            @if($booking->status == 'paid')
+            @if($booking->status == 'confirmed')
                 <form action="{{ route('admin.bookings.active', $booking->id) }}" method="POST" class="mt-4">
                     @csrf
                     <button class="bg-blue-600 text-white px-4 py-2 rounded">Tandai Sedang Disewa (Active)</button>
