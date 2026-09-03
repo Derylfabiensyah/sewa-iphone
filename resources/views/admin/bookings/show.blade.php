@@ -24,8 +24,8 @@
             @if($booking->payment && $booking->payment->proof_of_payment)
                 <p><strong>Bukti Transfer:</strong> <a href="{{ asset('storage/'.$booking->payment->proof_of_payment) }}" target="_blank" class="text-blue-600 underline">Lihat Foto</a></p>
                 
-                @if($booking->status == 'pending')
-                    <form action="{{ route('admin.bookings.verify', $booking->id) }}" method="POST" class="mt-4">
+                @if($booking->payment->status == 'pending')
+                <form action="{{ route('admin.bookings.verify', $booking->id) }}" method="POST" class="mt-4">
                         @csrf
                         <button class="bg-green-600 text-white px-4 py-2 rounded">Verifikasi Pembayaran</button>
                     </form>
